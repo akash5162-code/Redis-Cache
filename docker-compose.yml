@@ -1,0 +1,12 @@
+services:
+  redis:
+    image: redis:7-alpine        # Lightweight Alpine-based Redis image
+    container_name: redis-cache
+    ports:
+      - "6379:6379"              # host:container — default Redis port
+    volumes:
+      - redis_data:/data         # Persist data even if container restarts
+    restart: unless-stopped      # Auto-restart on crash
+
+volumes:
+  redis_data:                    # Named volume managed by Docker
